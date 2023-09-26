@@ -122,8 +122,8 @@ auth:
 
   # Automaticaly disabled if OIDC or LDAP enabled
   singleUser:
-    username: username
-    password: changemechangeme # Must to have at least 12 characters
+    username: admin
+    password: admin1admin2 # Must to have at least 12 characters
 
   clientAuth:
     enabled: false
@@ -220,11 +220,15 @@ containerPorts: []
 ##
 ingress:
   enabled: false
-  # className: nginx
+  className: nginx
+  secretName: my-secret
+  secretData:
+    username: YWRtaW4K
+    password: YWRtaW4xYWRtaW4yCg==
   annotations: {}
-  tls: []
-  hosts: []
-  path: /
+  tls: [my-java-app.com]
+  hosts: [my-java-app.com]
+  path: /nifi
   # If you want to change the default path, see this issue https://github.com/cetic/helm-nifi/issues/22
 
 # Amount of memory to give the NiFi java heap
